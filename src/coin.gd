@@ -8,7 +8,10 @@ func _ready():
 
 func _input(event):
 	# Detect any key press or mouse click
-	if event is InputEventKey and event.keycode == KEY_SPACE and event.pressed:
+	if not event.pressed:
+		return
+
+	if (event is InputEventKey and event.keycode == KEY_SPACE) or event is InputEventScreenTouch:
 		flip_coin()
 
 func flip_coin():
